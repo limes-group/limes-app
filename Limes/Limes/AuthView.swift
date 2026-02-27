@@ -71,7 +71,7 @@ struct AuthView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(viewModel.isFormValid ? Color.black : Color.gray)
+                    .background(viewModel.isFormValid ? Color.black : Color.lightBunker)
                     .foregroundColor(.white)
                     .cornerRadius(12)
                     .disabled(!viewModel.isFormValid || viewModel.isLoading)

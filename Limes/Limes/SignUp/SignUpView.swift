@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @State private var countryCode = "+27"
     @State private var phoneNumber: String = ""
     @State private var emailAddress: String = ""
     @State private var password: String = ""
@@ -22,50 +23,93 @@ struct SignUpView: View {
             ZStack {
                 VStack {
                     Label("Sign up", image: "GreenDot")
-                        .font(.largeTitle)
-                        .foregroundStyle(.gray)
+                        .font(.manrope(size: 16))
+                        .foregroundStyle(.lightBunker)
                         .multilineTextAlignment(.center)
                     
                     Text("Let's get started")
-                        .font(.largeTitle)
+                        .bold()
+                        .font(.darkerGrotesque(size: 48))
                         .foregroundStyle(.white)
                     
                     Text("Join the Lines community")
-                        .font(.body)
-                        .foregroundStyle(.gray)
+                        .font(Font.system(.body, weight: .medium))
+                        .font(.manrope(size: 15))
+                        .foregroundStyle(.lightBunker)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
                     
                     Text("Phone number")
+                        .font(Font.system(.body, weight: .medium))
+                        .font(.manrope(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Email address", text: .constant("Hello"))
-                        .foregroundStyle(Color(.white))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .background(.secondaryBunker)
+                    HStack {
+                        // Country Code / Picker
+                        Text(countryCode)
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 10)
+                            .cornerRadius(8)
+                        
+                        Rectangle()
+                            .frame(maxWidth: 1, maxHeight: 44)
+                            .foregroundStyle(Color(.darkBorder))
+                        
+                        // Phone Number Field
+                        TextField("Phone Number", text: $phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
+                            .font(Font.system(.body, weight: .regular))
+                            .font(.manrope(size: 16))
+                            .keyboardType(.phonePad)
+                            .foregroundStyle(Color.white)
+                            .background(.secondaryBunker)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .background(.secondaryBunker)
+                    .border(.darkBorder)
+                    .cornerRadius(8)
+                    .shadow(radius: 1)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
                     Text("Email address")
+                        .font(Font.system(.body, weight: .medium))
+                        .font(.manrope(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Email address", text: .constant(""))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Email address", text: $emailAddress, prompt: Text("Enter email address").foregroundStyle(.lightBunker))
+                        .font(Font.system(.body, weight: .regular))
+                        .font(.manrope(size: 16))
+                        .foregroundStyle(Color.white)
+                        .keyboardType(.emailAddress)
+                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
+                        .background(.secondaryBunker)
+                        .border(.darkBorder)
+                        .cornerRadius(8)
+                        .shadow(radius: 1)
                     
                     Text("Password")
+                        .font(Font.system(.body, weight: .medium))
+                        .font(.manrope(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     ToggleablePasswordField(password: $password, titleKey: "Password")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     
                     Text("Confirm password")
+                        .font(Font.system(.body, weight: .medium))
+                        .font(.manrope(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     ToggleablePasswordField(password: $confirmPassword, titleKey: "Confirm Password")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     
                     Toggle(isOn: $hasAgreed) {
                         Text("I agree to the [Terms and Conditions](https://www.apple.com)")
-                            .font(.footnote)
+                            .font(Font.system(.body, weight: .medium))
+                            .font(.manrope(size: 14))
                             .foregroundStyle(.white)
                     }
                     
@@ -73,9 +117,10 @@ struct SignUpView: View {
                         isRegisterActive = true
                     } label: {
                         Text("Continue")
-                            .bold()
+                            .font(Font.system(.body, weight: .bold))
+                            .font(.darkerGrotesque(size: 16))
                             .foregroundStyle(.black )
-                            .frame(maxWidth: .infinity, maxHeight: 60)
+                            .frame(maxWidth: .infinity, maxHeight: 40)
                             .background(.accent)
                             .buttonStyle(.borderedProminent)
                             .cornerRadius(16)
@@ -91,6 +136,8 @@ struct SignUpView: View {
                         
                     }) {
                         Text("Already have an account? \(Text("Login in now").underline().foregroundStyle(.accent))")
+                            .font(Font.system(.body, weight: .medium))
+                            .font(.manrope(size: 14))
                             .foregroundStyle(.white)
                     }
                     Spacer()

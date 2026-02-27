@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct VerticalLabelStyle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+public struct VerticalLabelStyle: LabelStyle {
+    public let spacing: CGFloat // Optional spacing parameter
 
-#Preview {
-    VerticalLabelStyle()
+    public init(spacing: CGFloat = 8) {
+        self.spacing = spacing
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .center, spacing: spacing) {
+            configuration.icon
+            configuration.title
+        }
+    }
 }

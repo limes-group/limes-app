@@ -9,19 +9,12 @@ import SwiftUI
 
 struct PaymentView: View {
     var body: some View {
-        VStack {
-            ZStack {
-                LinearGradient(colors: [.accentColor, .green],
-                               startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-                VStack {
-                    Text("Payment View")
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
-                }
+        ZStack {
+            VStack {
+                ProfileHeaderView()
+                Spacer()
             }
+            .appBackground()
         }
     }
 }

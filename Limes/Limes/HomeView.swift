@@ -13,17 +13,12 @@ struct HomeView: View {
     var body: some View {
         VStack {
             ZStack {
-                LinearGradient(colors: [.accentColor],
-                               startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
-                .ignoresSafeArea()
                 VStack {
-                    Text("Home View")
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
+                    ProfileHeaderView()
+                    Spacer()
                 }
             }
+            .appBackground()
         }
     }
 }

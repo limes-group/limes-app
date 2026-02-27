@@ -17,11 +17,11 @@ struct HomeTabView: View {
                            endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             TabView {
-                HomeView()
+                DashboardView()
                     .tabItem { Label("Home", systemImage: "house") }
                     .tag(0) // Unique tag for programmatic selection
                 
-                PaymentView()
+                DepositView()
                     .tabItem { Label("Payment", systemImage: "creditcard.fill") }
                     .tag(0) // Unique tag for programmatic selection
                 TransfarView()
