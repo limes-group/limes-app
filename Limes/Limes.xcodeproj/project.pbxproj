@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F044F1372F519D5A007C5F60 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F044F1362F519D5A007C5F60 /* FirebaseAuth */; };
+		F044F13D2F51BD27007C5F60 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F044F13C2F51BD27007C5F60 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F0B0EDC62F48F129005007C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F044F1372F519D5A007C5F60 /* FirebaseAuth in Frameworks */,
+				F044F13D2F51BD27007C5F60 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +79,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F044F1352F519D5A007C5F60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F0B0EDAF2F48F128005007C9 = {
 			isa = PBXGroup;
 			children = (
 				F0B0EDBA2F48F128005007C9 /* Limes */,
 				F0B0EDC82F48F129005007C9 /* LimesTests */,
 				F0B0EDD22F48F129005007C9 /* LimesUITests */,
+				F044F1352F519D5A007C5F60 /* Frameworks */,
 				F0B0EDB92F48F128005007C9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +127,8 @@
 			);
 			name = Limes;
 			packageProductDependencies = (
+				F044F1362F519D5A007C5F60 /* FirebaseAuth */,
+				F044F13C2F51BD27007C5F60 /* FirebaseFirestore */,
 			);
 			productName = Limes;
 			productReference = F0B0EDB82F48F128005007C9 /* Limes.app */;
@@ -195,6 +212,9 @@
 			);
 			mainGroup = F0B0EDAF2F48F128005007C9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F0964B322F519294002041A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F0B0EDB92F48F128005007C9 /* Products */;
 			projectDirPath = "";
@@ -395,11 +415,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Limes/Limes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NJUN5LWLUK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Limes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -410,7 +432,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = za.co.motsekisson.Limes;
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.limes.Limes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -427,11 +449,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Limes/Limes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NJUN5LWLUK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Limes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -442,7 +466,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = za.co.motsekisson.Limes;
+				PRODUCT_BUNDLE_IDENTIFIER = za.co.limes.Limes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -578,6 +602,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0964B322F519294002041A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F044F1362F519D5A007C5F60 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0964B322F519294002041A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F044F13C2F51BD27007C5F60 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0964B322F519294002041A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F0B0EDB02F48F128005007C9 /* Project object */;
 }

@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @State private var countryCode = "+27"
-    @State private var phoneNumber: String = ""
-    @State private var emailAddress: String = ""
-    @State private var password: String = ""
-    @State private var confirmPassword: String = ""
-    @State private var isPasswordSecure: Bool = true
-    @State private var isConfirmSecure: Bool = true
-    @State private var hasAgreed = false
-    @State private var isRegisterActive = false
+    @ObservedObject var viewModel = SignUpViewModel()
+//    @Binding var isValidPassword: Bool = false
+    var isValidPassword: Bool = false
+    let validatePassword: (String) -> Bool = { _ in return false }
     
     var body: some View {
         NavigationStack {
@@ -46,7 +41,7 @@ struct SignUpView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     HStack {
                         // Country Code / Picker
-                        Text(countryCode)
+                        Text(viewModel.countryCode)
                             .foregroundStyle(.white)
                             .padding(.horizontal, 10)
                             .cornerRadius(8)
@@ -56,7 +51,7 @@ struct SignUpView: View {
                             .foregroundStyle(Color(.darkBorder))
                         
                         // Phone Number Field
-                        TextField("Phone Number", text: $phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
+                        TextField("Phone Number", text: $viewModel.phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
                             .font(Font.system(.body, weight: .regular))
                             .font(.manrope(size: 16))
                             .keyboardType(.phonePad)
@@ -76,7 +71,7 @@ struct SignUpView: View {
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Email address", text: $emailAddress, prompt: Text("Enter email address").foregroundStyle(.lightBunker))
+                    TextField("Email address", text: $viewModel.emailAddress, prompt: Text("Enter email address").foregroundStyle(.lightBunker))
                         .font(Font.system(.body, weight: .regular))
                         .font(.manrope(size: 16))
                         .foregroundStyle(Color.white)
@@ -94,8 +89,15 @@ struct SignUpView: View {
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    ToggleablePasswordField(password: $password, titleKey: "Password")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(!isValidPassword ? .red : .white)
+                        )
+//                        .onChange(of: viewModel.password) { newValue in
+//                            self.isValidPassword = validatePassword(newValue)
+//                        }
                     
                     Text("Confirm password")
                         .font(Font.system(.body, weight: .medium))
@@ -103,10 +105,14 @@ struct SignUpView: View {
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    ToggleablePasswordField(password: $confirmPassword, titleKey: "Confirm Password")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                    ToggleablePasswordField(password: $viewModel.confirmPassword, titleKey: "Confirm Password")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(!isValidPassword ? .red : .white)
+                        )
                     
-                    Toggle(isOn: $hasAgreed) {
+                    Toggle(isOn: $viewModel.hasAgreed) {
                         Text("I agree to the [Terms and Conditions](https://www.apple.com)")
                             .font(Font.system(.body, weight: .medium))
                             .font(.manrope(size: 14))
@@ -114,7 +120,7 @@ struct SignUpView: View {
                     }
                     
                     Button {
-                        isRegisterActive = true
+                        viewModel.createUser()
                     } label: {
                         Text("Continue")
                             .font(Font.system(.body, weight: .bold))
@@ -127,10 +133,6 @@ struct SignUpView: View {
                     }
                     .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-                    .navigationDestination(isPresented: $isRegisterActive) {
-                        AuthView(isLoginMode: false)
-                            .navigationBarBackButtonHidden(true)
-                    }
                     
                     Button(action: {
                         

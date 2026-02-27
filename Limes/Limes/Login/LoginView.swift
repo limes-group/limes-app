@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var countryCode = "+27"
-    @State private var phoneNumber: String = ""
-    @State private var password: String = ""
-    @State private var isPasswordSecure: Bool = true
-    @State private var rememberMe = false
-    @State private var isLoginActive = false
+    @ObservedObject var viewModel = LoginViewModel()
+    @Bindable var userValidator: UserValidator
+    @State var errorMessage: String?
+    @State private var showingCustomAlert = false
     
     var body: some View {
         NavigationStack {
@@ -39,7 +37,7 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     HStack {
                         // Country Code / Picker
-                        Text(countryCode)
+                        Text(viewModel.countryCode)
                             .foregroundStyle(.white)
                             .padding(.horizontal, 10)
                             .cornerRadius(8)
@@ -47,12 +45,12 @@ struct LoginView: View {
                             .frame(maxWidth: 1, maxHeight: 44)
                             .foregroundStyle(Color(.darkBorder))
                         // Phone Number Field
-                        TextField("Phone Number", text: $phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
+                        TextField("Phone Number", text: $viewModel.phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
                             .keyboardType(.phonePad)
                             .foregroundStyle(.white)
                             .background(.secondaryBunker)
-                            .onChange(of: phoneNumber) { oldValue, newValue in
-                                phoneNumber = Utilities().formatPhoneNumber(newValue)
+                            .onChange(of: viewModel.phoneNumber) { oldValue, newValue in
+                                viewModel.phoneNumber = Utilities().formatPhoneNumber(newValue)
                             }
                     }
                     .frame(maxWidth: .infinity, maxHeight: 40)
@@ -68,10 +66,10 @@ struct LoginView: View {
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    ToggleablePasswordField(password: $password, titleKey: "Password")
+                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
-                    Toggle(isOn: $rememberMe) {
+                    Toggle(isOn: $viewModel.rememberMe) {
                         Text("Remember Me")
                             .font(.custom("Manrope-Regular", size: 14, relativeTo: .body))
                             .foregroundStyle(.white)
@@ -87,7 +85,9 @@ struct LoginView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
                     Button {
-                        //                        isRegisterActive = true
+                        Task {
+                            await loginUser()
+                        }
                     } label: {
                         Text("Continue")
                             .font(Font.system(.body, weight: .bold))
@@ -100,10 +100,7 @@ struct LoginView: View {
                     }
                     .padding(EdgeInsets(top: 8, leading: 0, bottom: 16, trailing: 0))
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-                    .navigationDestination(isPresented: $isLoginActive) {
-                        AuthView(isLoginMode: false)
-                            .navigationBarBackButtonHidden(true)
-                    }
+                    .disabled(userValidator.isLoginDisabled)
                     
                     Button(action: {
                         
@@ -117,9 +114,51 @@ struct LoginView: View {
             }
             .appBackground()
         }
+        .overlay(alignment: .center) {
+            // Custom alert overlay
+            if showingCustomAlert {
+                Color.black.opacity(0.4) // Semi-transparent background
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        // Optional: Dismiss alert by tapping background
+                        showingCustomAlert = false
+                    }
+                
+                CustomAlertView(
+                    title: "Limes",
+                    message: errorMessage ?? "Error", isOkayOnly: true,
+                    isPresented: $showingCustomAlert,
+                    confirmAction: {
+                        // Put your confirmation logic here
+                        print("Action confirmed!")
+                    }
+                )
+                .transition(.scale) // Optional: Add a transition effect
+            }
+        }
+    }
+    
+    func loginUser() async {
+        do {
+            viewModel.user = try await viewModel.loginUser()
+        } catch LimesAPIError.invalidData {
+            errorMessage = "Invalid data"
+            showingCustomAlert = true
+        } catch LimesAPIError.invalidURL {
+            errorMessage = "Invalid URL"
+            showingCustomAlert = true
+        } catch LimesAPIError.invalidResponse {
+            errorMessage = "Invalid Response"
+            showingCustomAlert = true
+        } catch {
+            errorMessage = "Something went wrong, please try again"
+            showingCustomAlert = true
+        }
     }
 }
 
 #Preview {
-    LoginView()
+    @Previewable @State var userValidator = UserValidator()
+    
+    LoginView (userValidator: userValidator)
 }
