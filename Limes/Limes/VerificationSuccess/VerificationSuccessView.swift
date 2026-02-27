@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegistrationDoneView: View {
+struct VerificationSuccessView: View {
     var body: some View {
         ZStack {
             LinearGradient(colors: [.blue, .purple],
@@ -73,5 +73,5 @@ struct RegistrationDoneView: View {
 }
 
 #Preview {
-    RegistrationDoneView()
+    VerificationSuccessView()
 }
