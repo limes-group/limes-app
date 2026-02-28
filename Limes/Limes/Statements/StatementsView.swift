@@ -89,8 +89,6 @@ struct StatementsView: View {
                             .foregroundStyle(amount > 0 ? Color(.green) : Color(.red))
                             .multilineTextAlignment(.leading)
                             .frame(alignment: .trailing)
-                        
-                        Spacer()
                     }
                     
                     Text(statementDate)
