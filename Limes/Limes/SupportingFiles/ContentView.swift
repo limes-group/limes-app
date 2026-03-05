@@ -37,7 +37,7 @@ struct ContentView: View {
                                 path.append("SignupViewValue")
                             }
                             
-                            AccentButton(buttonTitle: "Login") {
+                            AccentButton(buttonTitle: "Login", height: 60) {
                                 path.append("LoginViewValue")
                             }
                             

@@ -15,9 +15,9 @@ struct DashboardView: View {
     @State var availableBalance: Double = 10000
     @State private var isSecure: Bool = true
     @State var transactions: [Transaction] = [
-        Transaction(name: "Groceries", amount: 2250, date: Date(), icon: "Basket", cardType: CardType.cardtype_visa.displayName),
-        Transaction(name: "Toiletries", amount: 5000, date: Date(), icon: "Basket", cardType: CardType.cardtype_masterCardc.displayName),
-        Transaction(name: "Rent", amount: 9000, date: Date(), icon: "Basket", cardType: CardType.other.displayName)
+        Transaction(name: "Groceries", amount: 2250, date: Date(), icon: "Basket", cardType: CardType.cardtype_visa.displayName, cashBack: 0),
+        Transaction(name: "Toiletries", amount: 5000, date: Date(), icon: "Basket", cardType: CardType.cardtype_masterCardc.displayName, cashBack: 0),
+        Transaction(name: "Rent", amount: 9000, date: Date(), icon: "Basket", cardType: CardType.other.displayName, cashBack: 0)
     ]
     
     var body: some View {

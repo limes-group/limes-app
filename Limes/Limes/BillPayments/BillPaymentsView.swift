@@ -29,7 +29,7 @@ struct BillPaymentsView: View {
                     
                     InputReferenceView(inputReference: $inputReference)
                     
-                    AccentButton(buttonTitle: "Confirm") {
+                    AccentButton(buttonTitle: "Confirm", height: 60) {
                         Task {
                             
                         }

@@ -14,4 +14,5 @@ struct Transaction: Codable, Identifiable {
     var date: Date
     var icon: String
     var cardType: String
+    var cashBack: Double
 }

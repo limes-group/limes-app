@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AccentButton: View {
     let buttonTitle: String
+    let height: CGFloat?
     let action: () -> Void
     
     var body: some View {
@@ -17,10 +18,9 @@ struct AccentButton: View {
                 action()
             } label: {
                 Text(buttonTitle)
-                    .font(Font.system(.body, weight: .bold))
-                    .font(.darkerGrotesque(size: 16))
+                    .font(.darkerGrotesqueBold(size: 16))
                     .foregroundStyle(.black )
-                    .frame(maxWidth: .infinity, maxHeight: 60)
+                    .frame(maxWidth: .infinity, maxHeight: height)
                     .background(.accent)
                     .buttonStyle(.borderedProminent)
                     .cornerRadius(16)
@@ -33,5 +33,5 @@ struct AccentButton: View {
 }
 
 #Preview {
-    AccentButton(buttonTitle: "Continue", action: {})
+    AccentButton(buttonTitle: "Continue", height: 60, action: {})
 }

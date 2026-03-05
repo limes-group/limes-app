@@ -67,7 +67,7 @@ struct EFTPaymentView: View {
                     
                     PinNumberFieldView(labelValue: "Pin:", pinNumber: $pinNumber, titleKey: "Create Pin")
                     
-                    AccentButton(buttonTitle: "Confirm") {
+                    AccentButton(buttonTitle: "Confirm", height: 60) {
                         Task {
                             
                         }

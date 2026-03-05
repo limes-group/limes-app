@@ -35,7 +35,7 @@ struct DepositView: View {
                         DepositCards(imageName: deposit.imageName, depositType: deposit.depositType)
                     }
                     
-                    AccentButton(buttonTitle: "Continue") {
+                    AccentButton(buttonTitle: "Continue", height: 60) {
                         Task {
                             
                         }

@@ -36,13 +36,13 @@ struct BuyAirtimeView: View {
                         
                         VStack() {
                             HStack {
-                                AccentButton(buttonTitle: "MTN airtime") {
+                                AccentButton(buttonTitle: "MTN airtime", height: 60) {
                                     Task {
                                         
                                     }
                                 }
                                 
-                                AccentButton(buttonTitle: "Vodacom airtime") {
+                                AccentButton(buttonTitle: "Vodacom airtime", height: 60) {
                                     Task {
                                         
                                     }
@@ -51,13 +51,13 @@ struct BuyAirtimeView: View {
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                AccentButton(buttonTitle: "Telkom airtime") {
+                                AccentButton(buttonTitle: "Telkom airtime", height: 60) {
                                     Task {
                                         
                                     }
                                 }
                                 
-                                AccentButton(buttonTitle: "Cell C airtime") {
+                                AccentButton(buttonTitle: "Cell C airtime", height: 60) {
                                     Task {
                                         
                                     }

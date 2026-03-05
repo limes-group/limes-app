@@ -61,7 +61,7 @@ struct TransfarView: View {
                         }
                         .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
                         
-                        AccentButton(buttonTitle: "Send") {
+                        AccentButton(buttonTitle: "Send", height: 60) {
                             Task {
                                 
                             }

@@ -10,6 +10,7 @@ import SwiftUI
 struct AppBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .frame(width: .infinity, height: .infinity)
             .background(
                 Color.black
                     .ignoresSafeArea()

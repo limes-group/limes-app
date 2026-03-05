@@ -86,7 +86,7 @@ struct VerificationView: View {
                         }
                         .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
                         
-                        AccentButton(buttonTitle: "Verify") {
+                        AccentButton(buttonTitle: "Verify", height: 60) {
                             Task {
                                 
                             }

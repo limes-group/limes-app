@@ -79,25 +79,15 @@ struct SignUpView: View {
                         .cornerRadius(8)
                         .shadow(radius: 1)
                     
-                    Text("Password")
-                        .font(.manropeMedium(size: 14))
-                        .foregroundStyle(Color(.white))
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password", placeholder: "Enter password")
+                        .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(!isValidPassword ? .red : .white)
                         )
                     
-                    Text("Confirm password")
-                        .font(.manropeMedium(size: 14))
-                        .foregroundStyle(Color(.white))
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    ToggleablePasswordField(password: $viewModel.confirmPassword, titleKey: "Confirm Password")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    ToggleablePasswordField(password: $viewModel.confirmPassword, titleKey: "Confirm Password", placeholder: "Enter password")
+                        .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(!isValidPassword ? .red : .white)
@@ -110,7 +100,7 @@ struct SignUpView: View {
                             .foregroundStyle(.white)
                     }
                     
-                    AccentButton(buttonTitle: "Continue") {
+                    AccentButton(buttonTitle: "Continue", height: 60) {
                         Task {
                             
                         }

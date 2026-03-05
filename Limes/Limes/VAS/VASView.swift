@@ -52,13 +52,13 @@ struct VASView: View {
                         
                         VStack() {
                             HStack {
-                                AccentButton(buttonTitle: "Airtime R0") {
+                                AccentButton(buttonTitle: "Airtime R0", height: 60) {
                                     Task {
                                         
                                     }
                                 }
                                 
-                                AccentButton(buttonTitle: "Mobile Data 0GB") {
+                                AccentButton(buttonTitle: "Mobile Data 0GB", height: 60) {
                                     Task {
                                         
                                     }
@@ -67,13 +67,13 @@ struct VASView: View {
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                AccentButton(buttonTitle: "SMS 0 SMS") {
+                                AccentButton(buttonTitle: "SMS 0 SMS", height: 60) {
                                     Task {
                                         
                                     }
                                 }
                                 
-                                AccentButton(buttonTitle: "Voice Bundles 0 Min") {
+                                AccentButton(buttonTitle: "Voice Bundles 0 Min", height: 60) {
                                     Task {
                                         
                                     }

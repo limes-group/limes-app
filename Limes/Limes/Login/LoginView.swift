@@ -56,13 +56,8 @@ struct LoginView: View {
                     .cornerRadius(8)
                     .shadow(radius: 1)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
-                    
-                    Text("Password")
-                        .font(.manropeMedium(size: 14))
-                        .foregroundStyle(Color(.white))
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password")
+                                        
+                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password", placeholder: "Enter password")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
                     Toggle(isOn: $viewModel.rememberMe) {
@@ -80,7 +75,7 @@ struct LoginView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
-                    AccentButton(buttonTitle: "Continue") {
+                    AccentButton(buttonTitle: "Continue", height: 60) {
                         Task {
                             print("clicked login button")
                         }

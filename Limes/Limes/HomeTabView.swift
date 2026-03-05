@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeTabView: View {
+    @ObservedObject var userViewModel = ProfileViewModel.sharedInstance
     @State private var selectedTab = 0 // Use 0, 1, etc., or an enum
     
     var body: some View {
@@ -17,19 +18,21 @@ struct HomeTabView: View {
                            endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             TabView {
-                DashboardView()
-                    .tabItem { Label("Home", systemImage: "house") }
-                    .tag(0) // Unique tag for programmatic selection
+                WalletHomeView()
+                    .tabItem { Label("Wallet", image: "Limes Tab Icon") }
+                    .tag(0)
                 
                 DepositView()
-                    .tabItem { Label("Payment", systemImage: "creditcard.fill") }
-                    .tag(0) // Unique tag for programmatic selection
-                TransfarView()
-                    .tabItem { Label("Transfar", systemImage: "arrow.left.arrow.right.circle") }
-                    .tag(0) // Unique tag for programmatic selection
-                SettingsView()
-                    .tabItem { Label("Settings", systemImage: "gear") }
-                    .tag(1)
+                    .tabItem { Label("Shop", image: "Shop Tab Icon") }
+                    .tag(0)
+                
+                ProfileView(profile: userViewModel.profile.user)
+                    .tabItem { Label("Profile", image: "Profile Tab Icon") }
+                    .tag(0)
+                
+//                SettingsView()
+//                    .tabItem { Label("Settings", systemImage: "gear") }
+//                    .tag(1)
             }
         }
     }

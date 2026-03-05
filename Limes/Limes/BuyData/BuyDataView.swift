@@ -36,12 +36,12 @@ struct BuyDataView: View {
                         
                         VStack() {
                             HStack {
-                                AccentButton(buttonTitle: "MTN Data") {
+                                AccentButton(buttonTitle: "MTN Data", height: 60) {
                                     Task {
                                         
                                     }
                                 }
-                                AccentButton(buttonTitle: "Vodacom Data") {
+                                AccentButton(buttonTitle: "Vodacom Data", height: 606) {
                                     Task {
                                         
                                     }
@@ -50,12 +50,12 @@ struct BuyDataView: View {
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                AccentButton(buttonTitle: "Telkom Data") {
+                                AccentButton(buttonTitle: "Telkom Data", height: 60) {
                                     Task {
                                         
                                     }
                                 }
-                                AccentButton(buttonTitle: "Cell C Data") {
+                                AccentButton(buttonTitle: "Cell C Data", height: 60) {
                                     Task {
                                         
                                     }

@@ -39,7 +39,7 @@ struct LinkCardView: View {
                     
                     CardDetailView(cardTypeString: $cardType, cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvv: $cvv)
                     
-                    AccentButton(buttonTitle: "Continue") {
+                    AccentButton(buttonTitle: "Continue", height: 60) {
                         Task {
                             
                         }

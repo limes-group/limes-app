@@ -20,7 +20,8 @@ struct LimesApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                LoginView(userValidator: userValidator)
+                WalletHomeView()
+                    .environmentObject(ProfileViewModel.sharedInstance)
                     .environmentObject(AuthManager())
             }
         }

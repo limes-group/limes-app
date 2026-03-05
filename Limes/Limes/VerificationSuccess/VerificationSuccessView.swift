@@ -32,7 +32,7 @@ struct VerificationSuccessView: View {
                     .frame(maxWidth: 140, maxHeight: 110)
                     .padding(EdgeInsets(top: 80, leading: 0, bottom: 80, trailing: 0))
                 
-                AccentButton(buttonTitle: "Start squeezing Limes") {
+                AccentButton(buttonTitle: "Start squeezing Limes", height: 60) {
                     Task {
                         
                     }

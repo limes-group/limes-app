@@ -61,12 +61,12 @@ struct BuyVouchersView: View {
                         
                         VStack() {
                             HStack {
-                                AccentButton(buttonTitle: "OTT") {
+                                AccentButton(buttonTitle: "OTT", height: 60) {
                                     Task {
                                         
                                     }
                                 }
-                                AccentButton(buttonTitle: "1 voucher") {
+                                AccentButton(buttonTitle: "1 voucher", height: 60) {
                                     Task {
                                         
                                     }
@@ -75,12 +75,12 @@ struct BuyVouchersView: View {
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                AccentButton(buttonTitle: "Hollywood Bets") {
+                                AccentButton(buttonTitle: "Hollywood Bets", height: 60) {
                                     Task {
                                         
                                     }
                                 }
-                                AccentButton(buttonTitle: "Blue Voucher") {
+                                AccentButton(buttonTitle: "Blue Voucher", height: 60) {
                                     Task {
                                         
                                     }

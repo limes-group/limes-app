@@ -115,7 +115,7 @@ struct ForgotPasswordView: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     }
                     
-                    AccentButton(buttonTitle: "Reset") {
+                    AccentButton(buttonTitle: "Reset", height: 60) {
                         Task {
                             
                         }
