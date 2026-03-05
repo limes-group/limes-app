@@ -167,30 +167,26 @@ struct DashboardView: View {
             HStack (alignment: .center) {
                 Spacer()
                 Label("Top up", image: "TopUpIcon")
-                    .font(.manrope(size: 12))
-                    .font(Font.system(.body, weight: .medium))
+                    .font(.manropeMedium(size: 12))
                     .foregroundStyle(Color(Color.white))
                     .labelStyle(VerticalLabelStyle())
                     .frame(width: 60, height: 60)
                 Spacer()
                 
                 Label("Transfer", image: "TransferIcon")
-                    .font(.manrope(size: 12))
-                    .font(Font.system(.body, weight: .medium))
+                    .font(.manropeMedium(size: 12))
                     .foregroundStyle(Color(Color.white))
                     .labelStyle(VerticalLabelStyle())
                 Spacer()
                 
                 Label("Invest", image: "InvestIcon")
-                    .font(.manrope(size: 12))
-                    .font(Font.system(.body, weight: .medium))
+                    .font(.manropeMedium(size: 12))
                     .foregroundStyle(Color(Color.white))
                     .labelStyle(VerticalLabelStyle())
                 Spacer()
                 
                 Label("Pay", image: "PayIcon")
-                    .font(.manrope(size: 12))
-                    .font(Font.system(.body, weight: .medium))
+                    .font(.manropeMedium(size: 12))
                     .foregroundStyle(Color(Color.white))
                     .labelStyle(VerticalLabelStyle())
                 Spacer()
@@ -206,8 +202,7 @@ struct DashboardView: View {
             VStack {
                 HStack {
                     Text("Recent transactions")
-                        .font(.darkerGrotesque(size: 24))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 24))
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -215,7 +210,6 @@ struct DashboardView: View {
                     Spacer()
                     Text("See all")
                         .font(.manrope(size: 15))
-                        .font(Font.system(.body, weight: .regular))
                         .foregroundStyle(.lightBunker)
                         .multilineTextAlignment(.trailing)
                         .frame(maxWidth: 100, alignment: .trailing)
@@ -241,15 +235,13 @@ struct DashboardView: View {
                                 
                                 VStack {
                                     Text(String(describing: transaction.name))
-                                        .font(.darkerGrotesque(size: 20))
-                                        .bold()
+                                        .font(.darkerGrotesqueBold(size: 20))
                                         .foregroundStyle(Color(.white))
                                         .multilineTextAlignment(.leading)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                     
                                     Text(String(describing: transaction.date))
-                                        .font(.manrope(size: 12))
-                                        .font(Font.system(.body, weight: .medium))
+                                        .font(.manropeMedium(size: 12))
                                         .foregroundStyle(.lightBunker)
                                         .multilineTextAlignment(.leading)
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -257,7 +249,6 @@ struct DashboardView: View {
                                 
                                 Text(String(describing: transaction.amount))
                                     .font(.manrope(size: 15))
-                                    .font(Font.system(.body, weight: .regular))
                                     .foregroundStyle(.illusion)
                                     .multilineTextAlignment(.trailing)
                                     .frame(maxWidth: 100, alignment: .center)

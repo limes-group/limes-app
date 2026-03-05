@@ -15,8 +15,7 @@ struct VASView: View {
                     ProfileHeaderView()
                     
                     Text("Buy VAS")
-                        .font(.darkerGrotesque(size: 30))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 30))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                     
@@ -53,71 +52,31 @@ struct VASView: View {
                         
                         VStack() {
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("Airtime R0")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 60)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
-                                        .lineLimit(nil)
-                                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                                AccentButton(buttonTitle: "Airtime R0") {
+                                    Task {
+                                        
+                                    }
                                 }
                                 
-                                Button {
-                                    
-                                } label: {
-                                    Text("Mobile Data 0GB")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 60)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
-                                        .lineLimit(nil)
-                                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                                AccentButton(buttonTitle: "Mobile Data 0GB") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("SMS 0 SMS")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 60)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
-                                        .lineLimit(nil)
-                                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                                AccentButton(buttonTitle: "SMS 0 SMS") {
+                                    Task {
+                                        
+                                    }
                                 }
                                 
-                                Button {
-                                    
-                                } label: {
-                                    Text("Voice Bundles 0 Min")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 60)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
-                                        .lineLimit(nil)
-                                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                                AccentButton(buttonTitle: "Voice Bundles 0 Min") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
@@ -138,16 +97,14 @@ struct VASView: View {
                             
                             VStack (alignment: .leading) {
                                 Text("Ready to keep your number?")
-                                    .font(.darkerGrotesque(size: 20))
-                                    .bold()
+                                    .font(.darkerGrotesqueBold(size: 20))
                                     .foregroundStyle(Color(.white))
                                     .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                                 
                                 Text("Insert your Limes SIM and dial *140# to start Porting. Follow the prompts quick and easy.")
-                                    .font(Font.system(.body, weight: .regular))
                                     .font(.manrope(size: 15))
                                     .foregroundStyle(.lightBunker)
-                                    .multilineTextAlignment(.center)
+                                    .multilineTextAlignment(.trailing)
                                     .padding(EdgeInsets(top: 8, leading: 0, bottom: 32, trailing: 0))
                             }
                             .padding(EdgeInsets(top: 16, leading: 16, bottom: 8, trailing: 16))
@@ -180,25 +137,14 @@ struct VASView: View {
                     
                     VStack (alignment: .leading) {
                         Text(title)
-                            .font(.darkerGrotesque(size: 20))
-                            .bold()
+                            .font(.darkerGrotesqueBold(size: 20))
                             .foregroundStyle(Color(.white))
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                         
-                        Button {
-                            
-                        } label: {
-                            Text(buttonText)
-                                .font(Font.system(.body, weight: .bold))
-                                .font(.darkerGrotesque(size: 16))
-                                .foregroundStyle(.black)
-                                .frame(height: 40)
-                                .frame(maxWidth: .infinity)
-                                .background(.lightBunker)
-                                .buttonStyle(.borderedProminent)
-                                .cornerRadius(16)
-                                .lineLimit(nil)
-                                .padding(EdgeInsets(top: 4, leading: 0, bottom: 32, trailing: 0))
+                        WhiteButton(buttonTitle: buttonText) {
+                            Task {
+                                
+                            }
                         }
                     }
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))

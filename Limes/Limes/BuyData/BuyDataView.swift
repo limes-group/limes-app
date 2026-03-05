@@ -15,14 +15,12 @@ struct BuyDataView: View {
                     ProfileHeaderView()
                     
                     Text("Buy data")
-                        .font(.darkerGrotesque(size: 30))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 30))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                                         
                     Text("Select service provider")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.lightBunker))
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                     
@@ -38,63 +36,29 @@ struct BuyDataView: View {
                         
                         VStack() {
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("MTN Data")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "MTN Data") {
+                                    Task {
+                                        
+                                    }
                                 }
-                                
-                                Button {
-                                    
-                                } label: {
-                                    Text("Vodacom Data")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Vodacom Data") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("Telkom Data")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Telkom Data") {
+                                    Task {
+                                        
+                                    }
                                 }
-                                
-                                Button {
-                                    
-                                } label: {
-                                    Text("Cell C Data")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Cell C Data") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
@@ -115,13 +79,11 @@ struct BuyDataView: View {
                             
                             VStack (alignment: .leading) {
                                 Text("Ready to keep your number?")
-                                    .font(.darkerGrotesque(size: 20))
-                                    .bold()
+                                    .font(.darkerGrotesqueBold(size: 20))
                                     .foregroundStyle(Color(.white))
                                     .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                                 
                                 Text("Insert your Limes SIM and dial *140# to start Porting. Follow the prompts quick and easy.")
-                                    .font(Font.system(.body, weight: .regular))
                                     .font(.manrope(size: 15))
                                     .foregroundStyle(.lightBunker)
                                     .multilineTextAlignment(.center)

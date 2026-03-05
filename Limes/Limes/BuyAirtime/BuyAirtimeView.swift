@@ -15,14 +15,12 @@ struct BuyAirtimeView: View {
                     ProfileHeaderView()
                     
                     Text("Buy airtime")
-                        .font(.darkerGrotesque(size: 30))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 30))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                                         
                     Text("Select service provider")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.lightBunker))
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                     
@@ -38,63 +36,31 @@ struct BuyAirtimeView: View {
                         
                         VStack() {
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("MTN airtime")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "MTN airtime") {
+                                    Task {
+                                        
+                                    }
                                 }
                                 
-                                Button {
-                                    
-                                } label: {
-                                    Text("Vodacom airtime")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Vodacom airtime") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("Telkom airtime")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Telkom airtime") {
+                                    Task {
+                                        
+                                    }
                                 }
                                 
-                                Button {
-                                    
-                                } label: {
-                                    Text("Cell C airtime")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Cell C airtime") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
@@ -115,8 +81,7 @@ struct BuyAirtimeView: View {
                             
                             VStack (spacing: 8) {
                                 Text("Banner")
-                                    .font(.darkerGrotesque(size: 20))
-                                    .bold()
+                                    .font(.darkerGrotesqueBold(size: 20))
                                     .foregroundStyle(Color(.white))
                                 
                                 Image("Advert")

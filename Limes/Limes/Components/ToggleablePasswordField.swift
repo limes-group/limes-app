@@ -11,7 +11,7 @@ struct ToggleablePasswordField: View {
     @Binding var password: String
     @State private var isSecure: Bool = true
     var titleKey: String
-
+    
     var body: some View {
         ZStack {
             Rectangle()

@@ -43,11 +43,9 @@ struct TransfarView: View {
                     
                     TextField("Enter Amount", value: $amountEntered, format: .currency(code: "ZAR"))
                         .font(.manrope(size: 16))
-                        .font(Font.system(.body, weight: .regular))
                         .foregroundStyle(Color.white)
                         .keyboardType(.decimalPad)
                         .focused($isKeyboardFocused)
-//                        .numbersOnly($amountEntered.toUnwrapped(defaultValue: ""), includeDecimal: true)
                         .frame(maxHeight: 40)
                         .padding(10)
                         .background(.secondaryBunker)
@@ -56,42 +54,19 @@ struct TransfarView: View {
                         
                     
                     HStack {
-                        Button {
-//                            isRegisterActive = true
-                        } label: {
-                            Text("Request")
-                                .font(.darkerGrotesque(size: 16))
-                                .font(Font.system(.body, weight: .bold))
-                                .foregroundStyle(.white )
-                                .frame(maxWidth: 150, maxHeight: 40)
-                                .background(.secondaryBunker)
-                                .buttonStyle(.borderedProminent)
-                                .cornerRadius(16)
-                        }
-                        .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-//                        .navigationDestination(isPresented: $isRegisterActive) {
-//                            AuthView(isLoginMode: false)
-//                                .navigationBarBackButtonHidden(true)
-//                        }
-                        
-                        Button {
-//                            isLoginActive = true
-                        } label: {
-                            Text("Send")
-                                .font(.darkerGrotesque(size: 16))
-                                .font(Font.system(.body, weight: .bold))
-                                .foregroundStyle(.black)
-                                .frame(maxWidth: 150, maxHeight: 40)
-                                .background(.accent)
-                                .buttonStyle(.borderedProminent)
+                        BlackButton(buttonTitle: "Request") {
+                            Task {
                                 
-                                .cornerRadius(16)
+                            }
                         }
                         .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-//                        .navigationDestination(isPresented: $isLoginActive) {
-//                            AuthView(isLoginMode: true)
-//                                .navigationBarBackButtonHidden(true)
-//                        }
+                        
+                        AccentButton(buttonTitle: "Send") {
+                            Task {
+                                
+                            }
+                        }
+                        .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
                     }
                     .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                     
@@ -149,14 +124,12 @@ struct TransfarView: View {
         var body: some View {
             VStack {
                 Text("Transfer")
-                    .font(.darkerGrotesque(size: 36))
-                    .bold()
+                    .font(.darkerGrotesqueBold(size: 36))
                     .foregroundStyle(Color(.white))
                     .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                 
                 Text(availableAmount)
-                    .font(.darkerGrotesque(size: 36))
-                    .bold()
+                    .font(.darkerGrotesqueBold(size: 36))
                     .foregroundStyle(Color(.accent))
                     .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
             }
@@ -180,26 +153,22 @@ struct TransfarView: View {
                         HStack {
                             Text("\(cardType)")
                                 .font(.manrope(size: 15))
-                                .font(Font.system(.body, weight: .regular))
                                 .foregroundStyle(Color(.bunker))
                             Spacer()
                             
                             Text("LimesPay Visa")
                                 .font(.manrope(size: 15))
-                                .font(Font.system(.body, weight: .regular))
                                 .foregroundStyle(Color(.bunker))
                             Spacer()
                             
                             Text("\(cardNumber)")
                                 .font(.manrope(size: 12))
-                                .font(Font.system(.body, weight: .regular))
                                 .foregroundStyle(Color(.bunker))
                                 .multilineTextAlignment(.trailing)
                         }
                         
                         Text(amountEntered, format: .currency(code: "ZAR").precision(.fractionLength(2)))
-                            .font(.darkerGrotesque(size: 34))
-                            .bold()
+                            .font(.darkerGrotesqueBold(size: 34))
                             .foregroundStyle(Color(.bunker))
                     }
                     .padding()

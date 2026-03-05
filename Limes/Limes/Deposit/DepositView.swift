@@ -27,8 +27,7 @@ struct DepositView: View {
                     ProfileHeaderView()
                     
                     Text("Deposit")
-                        .font(.darkerGrotesque(size: 36))
-                        .font(Font.system(.body, weight: .bold))
+                        .font(.darkerGrotesqueBold(size: 36))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                     
@@ -36,20 +35,11 @@ struct DepositView: View {
                         DepositCards(imageName: deposit.imageName, depositType: deposit.depositType)
                     }
                     
-                    Button {
-                        //                            isLoginActive = true
-                    } label: {
-                        Text("Continue")
-                            .font(.darkerGrotesque(size: 16))
-                            .font(Font.system(.body, weight: .bold))
-                            .foregroundStyle(.black)
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .background(.accent)
-                            .buttonStyle(.borderedProminent)
-                        
-                            .cornerRadius(16)
+                    AccentButton(buttonTitle: "Continue") {
+                        Task {
+                            
+                        }
                     }
-                    .padding()
                     
                     Spacer()
                 }
@@ -79,11 +69,8 @@ struct DepositView: View {
                             .resizable()
                             .frame(width: 37, height: 24)
                             .multilineTextAlignment(.leading)
-//                            .frame(alignment: .leading)
-//                        Spacer()
                         
                         Text("\(depositType)")
-                            .font(Font.system(.body, weight: .regular))
                             .font(.manrope(size: 16))
                             .foregroundStyle(Color(.white))
                             .multilineTextAlignment(.leading)

@@ -30,8 +30,7 @@ struct ForgotPasswordView: View {
                         .multilineTextAlignment(.center)
                     
                     Text("Reset your password")
-                        .bold()
-                        .font(.darkerGrotesque(size: 48))
+                        .font(.darkerGrotesqueBold(size: 48))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.white)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
@@ -42,12 +41,12 @@ struct ForgotPasswordView: View {
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
                     
                     HStack {
+                        
                         Button {
                             self.selectedOption = .email
                         } label: {
                             Text("Email")
-                                .font(Font.system(.body, weight: .bold))
-                                .font(.darkerGrotesque(size: 16))
+                                .font(.darkerGrotesqueBold(size: 16))
                                 .foregroundStyle(self.selectedOption == .email ? Color.black : Color.white )
                                 .frame(maxWidth: .infinity, maxHeight: 40)
                                 .background(self.selectedOption == .email ? Color.accent : Color.secondaryBunker)
@@ -75,8 +74,7 @@ struct ForgotPasswordView: View {
                     
                     if (self.selectedOption == .email) {
                         Text("Email address")
-                            .font(Font.system(.body, weight: .medium))
-                            .font(.manrope(size: 14))
+                            .font(.manropeMedium(size: 14))
                             .foregroundStyle(Color(.white))
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -90,8 +88,7 @@ struct ForgotPasswordView: View {
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     } else {
                         Text("Phone number")
-                            .font(Font.system(.body, weight: .medium))
-                            .font(.manrope(size: 14))
+                            .font(.manropeMedium(size: 14))
                             .foregroundStyle(Color(.white))
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -118,24 +115,12 @@ struct ForgotPasswordView: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     }
                     
-                    Button {
-                        //                        isRegisterActive = true
-                    } label: {
-                        Text("Reset")
-                            .font(Font.system(.body, weight: .bold))
-                            .font(.darkerGrotesque(size: 16))
-                            .foregroundStyle(.black )
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .background(.accent)
-                            .buttonStyle(.borderedProminent)
-                            .cornerRadius(16)
+                    AccentButton(buttonTitle: "Reset") {
+                        Task {
+                            
+                        }
                     }
-                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 16, trailing: 0))
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-//                    .navigationDestination(isPresented: $isLoginActive) {
-//                        AuthView(isLoginMode: false)
-//                            .navigationBarBackButtonHidden(true)
-//                    }
                     Spacer()
                 }
                 .padding()

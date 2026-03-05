@@ -23,19 +23,16 @@ struct SignUpView: View {
                         .multilineTextAlignment(.center)
                     
                     Text("Let's get started")
-                        .bold()
-                        .font(.darkerGrotesque(size: 48))
+                        .font(.darkerGrotesqueBold(size: 48))
                         .foregroundStyle(.white)
                     
                     Text("Join the Lines community")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 15))
+                        .font(.manropeMedium(size: 15))
                         .foregroundStyle(.lightBunker)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
                     
                     Text("Phone number")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -51,8 +48,8 @@ struct SignUpView: View {
                             .foregroundStyle(Color(.darkBorder))
                         
                         // Phone Number Field
-                        TextField("Phone Number", text: $viewModel.phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
-                            .font(Font.system(.body, weight: .regular))
+                        TextField("Phone Number", text: $viewModel.phoneNumber, prompt: Text("Enter phone number")
+                            .foregroundStyle(.lightBunker))
                             .font(.manrope(size: 16))
                             .keyboardType(.phonePad)
                             .foregroundStyle(Color.white)
@@ -66,8 +63,7 @@ struct SignUpView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
                     Text("Email address")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -84,8 +80,7 @@ struct SignUpView: View {
                         .shadow(radius: 1)
                     
                     Text("Password")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -95,13 +90,9 @@ struct SignUpView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(!isValidPassword ? .red : .white)
                         )
-//                        .onChange(of: viewModel.password) { newValue in
-//                            self.isValidPassword = validatePassword(newValue)
-//                        }
                     
                     Text("Confirm password")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -119,29 +110,18 @@ struct SignUpView: View {
                             .foregroundStyle(.white)
                     }
                     
-                    Button {
-                        viewModel.createUser()
-                    } label: {
-                        Text("Continue")
-                            .font(Font.system(.body, weight: .bold))
-                            .font(.darkerGrotesque(size: 16))
-                            .foregroundStyle(.black )
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .background(.accent)
-                            .buttonStyle(.borderedProminent)
-                            .cornerRadius(16)
+                    AccentButton(buttonTitle: "Continue") {
+                        Task {
+                            
+                        }
                     }
-                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
-                    .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
                     
-                    Button(action: {
-                        
-                    }) {
-                        Text("Already have an account? \(Text("Login in now").underline().foregroundStyle(.accent))")
-                            .font(Font.system(.body, weight: .medium))
-                            .font(.manrope(size: 14))
-                            .foregroundStyle(.white)
+                    LinkButton(buttonTitle: "Already have an account?", linkText: "Login now") {
+                        Task {
+                            
+                        }
                     }
+                    
                     Spacer()
                 }
                 .padding()

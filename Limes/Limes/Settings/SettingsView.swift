@@ -16,8 +16,7 @@ struct SettingsView: View {
                         ProfileHeaderView()
                         
                         Text("Settings")
-                            .font(.darkerGrotesque(size: 36))
-                            .bold()
+                            .font(.darkerGrotesqueBold(size: 36))
                             .foregroundStyle(Color(.white))
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                         
@@ -42,13 +41,11 @@ struct SettingsView: View {
                                 
                                 VStack (alignment: .leading) {
                                     Text("Ready to keep your number?")
-                                        .font(.darkerGrotesque(size: 20))
-                                        .bold()
+                                        .font(.darkerGrotesqueBold(size: 20))
                                         .foregroundStyle(Color(.white))
                                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                                     
                                     Text("Insert your Limes SIM and dial *140# to start Porting. Follow the prompts quick and easy.")
-                                        .font(Font.system(.body, weight: .regular))
                                         .font(.manrope(size: 15))
                                         .foregroundStyle(.lightBunker)
                                         .multilineTextAlignment(.center)

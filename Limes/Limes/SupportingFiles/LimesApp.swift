@@ -11,6 +11,7 @@ import FirebaseCore
 
 @main
 struct LimesApp: App {
+    @State var userValidator = UserValidator()
     
     init() {
         FirebaseApp.configure()
@@ -19,7 +20,7 @@ struct LimesApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentView()
+                LoginView(userValidator: userValidator)
                     .environmentObject(AuthManager())
             }
         }

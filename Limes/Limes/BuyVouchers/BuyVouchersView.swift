@@ -15,8 +15,7 @@ struct BuyVouchersView: View {
                     ProfileHeaderView()
                     
                     Text("Buy vouchers")
-                        .font(.darkerGrotesque(size: 30))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 30))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                                         
@@ -33,8 +32,7 @@ struct BuyVouchersView: View {
                             
                             VStack (spacing: 8) {
                                 Text("Banner")
-                                    .font(.darkerGrotesque(size: 20))
-                                    .bold()
+                                    .font(.darkerGrotesqueBold(size: 20))
                                     .foregroundStyle(Color(.white))
                                 
                                 Image("Advert")
@@ -47,8 +45,7 @@ struct BuyVouchersView: View {
                     .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
                     
                     Text("Select service provider")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.lightBunker))
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                     
@@ -64,63 +61,29 @@ struct BuyVouchersView: View {
                         
                         VStack() {
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("OTT")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "OTT") {
+                                    Task {
+                                        
+                                    }
                                 }
-                                
-                                Button {
-                                    
-                                } label: {
-                                    Text("1 voucher")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "1 voucher") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
                             
                             HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Text("Hollywood Bets")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Hollywood Bets") {
+                                    Task {
+                                        
+                                    }
                                 }
-                                
-                                Button {
-                                    
-                                } label: {
-                                    Text("Blue Voucher")
-                                        .font(Font.system(.body, weight: .bold))
-                                        .font(.darkerGrotesque(size: 16))
-                                        .foregroundStyle(.black )
-                                        .frame(height: 40)
-                                        .frame(maxWidth: .infinity)
-                                        .background(.accent)
-                                        .buttonStyle(.borderedProminent)
-                                        .cornerRadius(16)
+                                AccentButton(buttonTitle: "Blue Voucher") {
+                                    Task {
+                                        
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))

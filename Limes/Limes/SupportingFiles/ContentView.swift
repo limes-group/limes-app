@@ -12,17 +12,17 @@ struct ContentView: View {
     @State private var isLoginActive = false
     @State private var isRegisterActive = false
     @State var userValidator = UserValidator()
+    @State private var path = NavigationPath()
     
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
-            NavigationStack {
+        if !viewModel.isSignedIn, viewModel.currentUserId.isEmpty {
+            NavigationStack(path: $path) {
                 ZStack {
                     VStack(spacing: 16) {
                         Spacer()
                         
                         Text("Welcome to")
-                            .bold()
-                            .font(.darkerGrotesque(size: 36))
+                            .font(.darkerGrotesqueBold(size: 36))
                             .foregroundStyle(.white)
                         
                         Image("Logo")
@@ -33,52 +33,42 @@ struct ContentView: View {
                         
                         HStack {
                             
-                            NavigationLink(destination: {
-                                SignUpView()
-                                    .navigationBarBackButtonHidden(true)
-                            }, label: {
-                                Text("Signup")
-                                    .font(.darkerGrotesque(size: 24))
-                                    .foregroundStyle(.black )
-                                    .frame(maxWidth: .infinity, maxHeight: 40)
-                                    .background(.white)
-                                    .buttonStyle(.borderedProminent)
-                                    .cornerRadius(16)
-                            })
+                            WhiteButton(buttonTitle: "Signup")  {
+                                path.append("SignupViewValue")
+                            }
                             
-                            NavigationLink(destination: {
-                                LoginView(userValidator: userValidator)
-                                    .navigationBarBackButtonHidden(true)
-                            }, label: {
-                                Text("Login")
-                                    .font(.darkerGrotesque(size: 24))
-                                    .foregroundStyle(.black)
-                                    .frame(maxWidth: .infinity, maxHeight: 40)
-                                    .background(.accent)
-                                    .buttonStyle(.borderedProminent)
-                                    
-                                    .cornerRadius(16)
-                            })
+                            AccentButton(buttonTitle: "Login") {
+                                path.append("LoginViewValue")
+                            }
+                            
+//                            NavigationLink(destination: {
+//                                LoginView(userValidator: userValidator)
+//                                    .navigationBarBackButtonHidden(true)
+//                            }, label: {
+//                                Text("Login")
+//                                    .font(.darkerGrotesque(size: 24))
+//                                    .foregroundStyle(.black)
+//                                    .frame(maxWidth: .infinity, maxHeight: 40)
+//                                    .background(.accent)
+//                                    .buttonStyle(.borderedProminent)
+//                                
+//                                    .cornerRadius(16)
+//                            })
                         }
                         Spacer()
                     }
                     .padding()
+                    .navigationDestination(for: String.self) { screen in
+                        if screen == "LoginViewValue" {
+                            LoginView(userValidator: userValidator)
+                        }
+                    }
                 }
                 .appBackground()
             }
         } else {
             LoginView(userValidator: userValidator)
         }
-    }
-}
-
-extension Font {
-    static func manrope(size: CGFloat, relativeTo style: Font.TextStyle = .body) -> Font {
-        return .custom("Manrope-Regular", size: size, relativeTo: style)
-    }
-    
-    static func darkerGrotesque(size: CGFloat, relativeTo style: Font.TextStyle = .body) -> Font {
-        return .custom("Darker-Grotesque-Regular", size: size, relativeTo: style)
     }
 }
 

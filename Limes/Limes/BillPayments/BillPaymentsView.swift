@@ -19,32 +19,26 @@ struct BillPaymentsView: View {
                     ProfileHeaderView()
                     
                     Text("Bill payments")
-                        .font(.darkerGrotesque(size: 30))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 30))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                     
                     SearchEntryView(searchText: $searchText)
-                    InputAmountView(inputAmount: $inputAmount)
+                    
+                    InputAmountView(labelValue: "Input amount:", placeholder: "Enter amount", inputAmount: $inputAmount)
+                    
                     InputReferenceView(inputReference: $inputReference)
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Confirm")
-                            .font(Font.system(.body, weight: .bold))
-                            .font(.darkerGrotesque(size: 16))
-                            .foregroundStyle(.black )
-                            .frame(height: 40)
-                            .frame(maxWidth: .infinity)
-                            .background(.accent)
-                            .buttonStyle(.borderedProminent)
-                            .cornerRadius(16)
+                    AccentButton(buttonTitle: "Confirm") {
+                        Task {
+                            
+                        }
                     }
-                    .padding()
+                    .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                     
                     Spacer()
                 }
+                .padding()
                 .appBackground()
             }
         }
@@ -56,8 +50,7 @@ struct BillPaymentsView: View {
         var body: some View {
             VStack {
                 Text("Search:")
-                    .font(Font.system(.body, weight: .medium))
-                    .font(.manrope(size: 14))
+                    .font(.manropeMedium(size: 14))
                     .foregroundStyle(Color(.white))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -65,7 +58,6 @@ struct BillPaymentsView: View {
                 HStack {
                     ZStack {
                         TextField("Search", text: $searchText, prompt: Text("Enter account name").foregroundStyle(.lightBunker))
-                            .font(Font.system(.body, weight: .regular))
                             .font(.manrope(size: 16))
                             .foregroundStyle(Color.white)
                             .keyboardType(.emailAddress)
@@ -88,34 +80,6 @@ struct BillPaymentsView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 16, leading: 16, bottom: 8, trailing: 16))
-        }
-    }
-    
-    struct InputAmountView: View {
-        @Binding var inputAmount: String
-        
-        var body: some View {
-            VStack {
-                Text("Input Amount:")
-                    .font(Font.system(.body, weight: .medium))
-                    .font(.manrope(size: 14))
-                    .foregroundStyle(Color(.white))
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                TextField("Input Amount", text: $inputAmount, prompt: Text("Enter amount").foregroundStyle(.lightBunker))
-                    .font(Font.system(.body, weight: .regular))
-                    .font(.manrope(size: 16))
-                    .foregroundStyle(Color.white)
-                    .keyboardType(.emailAddress)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-                    .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
-                    .background(.secondaryBunker)
-                    .border(.darkBorder)
-                    .cornerRadius(8)
-                    .shadow(radius: 1)
-            }
-            .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
         }
     }
     
@@ -125,13 +89,11 @@ struct BillPaymentsView: View {
         var body: some View {
             VStack {
                 Text("Input @EasyPay Reference:")
-                    .font(Font.system(.body, weight: .medium))
-                    .font(.manrope(size: 14))
+                    .font(.manropeMedium(size: 14))
                     .foregroundStyle(Color(.white))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 TextField("Input Reference", text: $inputReference, prompt: Text("Enter account number").foregroundStyle(.lightBunker))
-                    .font(Font.system(.body, weight: .regular))
                     .font(.manrope(size: 16))
                     .foregroundStyle(Color.white)
                     .keyboardType(.emailAddress)
@@ -142,7 +104,6 @@ struct BillPaymentsView: View {
                     .cornerRadius(8)
                     .shadow(radius: 1)
             }
-            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
         }
     }
 }

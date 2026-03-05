@@ -18,20 +18,17 @@ struct LoginView: View {
             ZStack {
                 VStack {
                     Label("Login", image: "GreenDot")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 16))
+                        .font(.manropeMedium(size: 16))
                         .foregroundStyle(.lightBunker)
                         .multilineTextAlignment(.center)
                     
                     Text("Welcome back!")
-                        .bold()
-                        .font(.darkerGrotesque(size: 48))
+                        .font(.darkerGrotesqueBold(size: 48))
                         .foregroundStyle(.white)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
                     
                     Text("Phone number")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -61,8 +58,7 @@ struct LoginView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
                     Text("Password")
-                        .font(Font.system(.body, weight: .medium))
-                        .font(.manrope(size: 14))
+                        .font(.manropeMedium(size: 14))
                         .foregroundStyle(Color(.white))
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -71,7 +67,7 @@ struct LoginView: View {
                     
                     Toggle(isOn: $viewModel.rememberMe) {
                         Text("Remember Me")
-                            .font(.custom("Manrope-Regular", size: 14, relativeTo: .body))
+                            .font(.manrope(size: 14))
                             .foregroundStyle(.white)
                     }
                     Button(action: {
@@ -84,30 +80,20 @@ struct LoginView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     
-                    Button {
+                    AccentButton(buttonTitle: "Continue") {
                         Task {
-                            await loginUser()
+                            print("clicked login button")
                         }
-                    } label: {
-                        Text("Continue")
-                            .font(Font.system(.body, weight: .bold))
-                            .font(.darkerGrotesque(size: 16))
-                            .foregroundStyle(.black )
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .background(.accent)
-                            .buttonStyle(.borderedProminent)
-                            .cornerRadius(16)
                     }
-                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 16, trailing: 0))
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
                     .disabled(userValidator.isLoginDisabled)
                     
-                    Button(action: {
-                        
-                    }) {
-                        Text("Don't have an account? \(Text("Sign up").underline().foregroundStyle(.accent))")
-                            .foregroundStyle(.white)
+                    LinkButton(buttonTitle: "Don't have an account?", linkText: "Sign up") {
+                        Task {
+                            
+                        }
                     }
+                    
                     Spacer()
                 }
                 .padding()

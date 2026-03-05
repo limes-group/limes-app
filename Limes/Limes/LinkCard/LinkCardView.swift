@@ -33,32 +33,19 @@ struct LinkCardView: View {
                     ProfileHeaderView()
                     
                     Text("Link card")
-                        .font(.darkerGrotesque(size: 36))
-                        .font(Font.system(.body, weight: .bold))
+                        .font(.darkerGrotesqueBold(size: 36))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
                     
                     CardDetailView(cardTypeString: $cardType, cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvv: $cvv)
                     
-                    Button {
-                        //                            isLoginActive = true
-                    } label: {
-                        Text("Continue")
-                            .font(.darkerGrotesque(size: 16))
-                            .font(Font.system(.body, weight: .bold))
-                            .foregroundStyle(.black)
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .background(.accent)
-                            .buttonStyle(.borderedProminent)
-                        
-                            .cornerRadius(16)
+                    AccentButton(buttonTitle: "Continue") {
+                        Task {
+                            
+                        }
                     }
                     .padding()
                     .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-                    //                        .navigationDestination(isPresented: $isLoginActive) {
-                    //                            AuthView(isLoginMode: true)
-                    //                                .navigationBarBackButtonHidden(true)
-                    //                        }
                     
                     Spacer()
                 }
@@ -79,8 +66,7 @@ struct LinkCardView: View {
         var body: some View {
             VStack (spacing: 8) {
                 Text("Card type")
-                    .font(Font.system(.body, weight: .medium))
-                    .font(.manrope(size: 14))
+                    .font(.manropeMedium(size: 14))
                     .foregroundStyle(Color(.white))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -120,8 +106,7 @@ struct LinkCardView: View {
                 }
                 
                 Text("Card name")
-                    .font(Font.system(.body, weight: .medium))
-                    .font(.manrope(size: 14))
+                    .font(.manropeMedium(size: 14))
                     .foregroundStyle(Color(.white))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -138,8 +123,7 @@ struct LinkCardView: View {
                     .shadow(radius: 1)
                 
                 Text("Card number")
-                    .font(Font.system(.body, weight: .medium))
-                    .font(.manrope(size: 14))
+                    .font(.manropeMedium(size: 14))
                     .foregroundStyle(Color(.white))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -158,8 +142,7 @@ struct LinkCardView: View {
                 HStack {
                     VStack {
                         Text("Expiry date")
-                            .font(Font.system(.body, weight: .medium))
-                            .font(.manrope(size: 14))
+                            .font(.manropeMedium(size: 14))
                             .foregroundStyle(Color(.white))
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -179,8 +162,7 @@ struct LinkCardView: View {
                     Spacer()
                     VStack {
                         Text("CVV")
-                            .font(Font.system(.body, weight: .medium))
-                            .font(.manrope(size: 14))
+                            .font(.manropeMedium(size: 14))
                             .foregroundStyle(Color(.white))
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)

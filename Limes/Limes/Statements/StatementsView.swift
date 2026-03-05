@@ -25,8 +25,7 @@ struct StatementsView: View {
                     ProfileHeaderView()
                     
                     Text("Statements")
-                        .font(.darkerGrotesque(size: 36))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 36))
                         .foregroundStyle(Color(.white))
                         .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                     
@@ -74,8 +73,7 @@ struct StatementsView: View {
                 VStack (spacing: 8) {
                     HStack () {
                         Text(title)
-                            .font(.darkerGrotesque(size: 16))
-                            .bold()
+                            .font(.darkerGrotesqueBold(size: 16))
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color(.white))
@@ -84,16 +82,14 @@ struct StatementsView: View {
                         Spacer()
                         
                         Text(amount, format: .currency(code: "ZAR"))
-                            .font(.darkerGrotesque(size: 16))
-                            .bold()
+                            .font(.darkerGrotesqueBold(size: 16))
                             .foregroundStyle(amount > 0 ? Color(.green) : Color(.red))
                             .multilineTextAlignment(.leading)
                             .frame(alignment: .trailing)
                     }
                     
                     Text(statementDate)
-                        .font(.darkerGrotesque(size: 14))
-                        .bold()
+                        .font(.darkerGrotesqueBold(size: 14))
                         .foregroundStyle(.lightBunker)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
