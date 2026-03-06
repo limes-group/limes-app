@@ -8,97 +8,113 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Environment(\.navigate) private var navigate
     @ObservedObject var viewModel = LoginViewModel()
-    @Bindable var userValidator: UserValidator
-    @State var errorMessage: String?
+    @ObservedObject var userViewModel = ProfileViewModel.sharedInstance
+    
     @State private var showingCustomAlert = false
+    var isSignInEnable: Bool {
+        !viewModel.email.isEmpty && !viewModel.password.isEmpty
+    }
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                VStack {
-                    Label("Login", image: "GreenDot")
-                        .font(.manropeMedium(size: 16))
-                        .foregroundStyle(.lightBunker)
-                        .multilineTextAlignment(.center)
-                    
-                    Text("Welcome back!")
-                        .font(.darkerGrotesqueBold(size: 48))
-                        .foregroundStyle(.white)
-                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
-                    
-                    Text("Phone number")
-                        .font(.manropeMedium(size: 14))
-                        .foregroundStyle(Color(.white))
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        // Country Code / Picker
-                        Text(viewModel.countryCode)
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 10)
-                            .cornerRadius(8)
-                        Rectangle()
-                            .frame(maxWidth: 1, maxHeight: 44)
-                            .foregroundStyle(Color(.darkBorder))
-                        // Phone Number Field
-                        TextField("Phone Number", text: $viewModel.phoneNumber, prompt: Text("Enter phone number").foregroundStyle(.lightBunker))
-                            .keyboardType(.phonePad)
-                            .foregroundStyle(.white)
-                            .background(.secondaryBunker)
-                            .onChange(of: viewModel.phoneNumber) { oldValue, newValue in
-                                viewModel.phoneNumber = Utilities().formatPhoneNumber(newValue)
-                            }
-                    }
+        ZStack {
+            VStack {
+                Label("Login", image: "GreenDot")
+                    .font(.manropeMedium(size: 16))
+                    .foregroundStyle(.lightBunker)
+                    .multilineTextAlignment(.center)
+                
+                Text("Welcome back!")
+                    .font(.darkerGrotesqueBold(size: 48))
+                    .foregroundStyle(.white)
+                    .padding(EdgeInsets(top: 4, leading: 0, bottom: 24, trailing: 0))
+                
+                Text("Email address")
+                    .font(.manropeMedium(size: 14))
+                    .foregroundStyle(Color(.white))
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextField("Email address", text: $viewModel.email, prompt: Text("Enter email address"))
+                    .font(Font.system(.body, weight: .regular))
+                    .font(.manrope(size: 16))
+                    .foregroundStyle(Color.white)
+                    .keyboardType(.emailAddress)
                     .frame(maxWidth: .infinity, maxHeight: 40)
+                    .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
                     .background(.secondaryBunker)
                     .border(.darkBorder)
                     .cornerRadius(8)
-                    .shadow(radius: 1)
+                
+                ToggleablePasswordField(password: $viewModel.password, titleKey: "Password", placeholder: "Enter password")
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
-                                        
-                    ToggleablePasswordField(password: $viewModel.password, titleKey: "Password", placeholder: "Enter password")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
-                    
-                    Toggle(isOn: $viewModel.rememberMe) {
-                        Text("Remember Me")
-                            .font(.manrope(size: 14))
-                            .foregroundStyle(.white)
-                    }
-                    Button(action: {
-                        
-                    }) {
-                        Text("Forgot your password?")
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
-                    
-                    AccentButton(buttonTitle: "Continue", height: 60) {
-                        Task {
-                            print("clicked login button")
-                        }
-                    }
-                    .shadow(color: Color.black.opacity(0.8), radius: 5, x: 2, y: 5)
-                    .disabled(userValidator.isLoginDisabled)
-                    
-                    LinkButton(buttonTitle: "Don't have an account?", linkText: "Sign up") {
-                        Task {
-                            
-                        }
-                    }
-                    
-                    Spacer()
+                
+                Toggle(isOn: $viewModel.rememberMe) {
+                    Text("Remember Me")
+                        .font(.manrope(size: 14))
+                        .foregroundStyle(.white)
                 }
-                .padding()
+                Button(action: {
+                    Task {
+                        try? await Task.sleep(for: .seconds(0.1))
+                        navigate(.forgotPasswordView)
+                    }
+                }) {
+                    Text("Forgot your password?")
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                
+                AccentButtonView(buttonTitle: "Continue", width: .infinity, height: 48) {
+                    Task {
+                        viewModel.isPerforming = true
+                        viewModel.isLoading = true
+                        viewModel.loginUser()
+                    }
+                } onStatusChange: { isLoading in
+                    viewModel.isPerforming = isLoading
+                }
+                .disabled(!isSignInEnable || viewModel.isPerforming)
+//                .padding()
+                //                TaskButtonView(buttonTitle: "Continue") {
+                //                    isPerforming = true
+                //                    viewModel.loginUser()
+                //                } onStatusChange: { isLoading in
+                //                    isPerforming = isLoading
+                //                }
+                //                .disabled(!isSignInEnable || isPerforming)
+                //                .padding()
+                
+                LinkButton(buttonTitle: "Don't have an account?", linkText: "Sign up") {
+                    Task {
+                        try? await Task.sleep(for: .seconds(0.1))
+                        navigate(.signupView)
+                    }
+                }
+                
+                Spacer()
             }
+            .padding()
             .appBackground()
+            .onChange(of: viewModel.signedIn) {
+                if viewModel.signedIn {
+                    Task {
+                        try? await Task.sleep(for: .seconds(0.1))
+                        navigate(.walletHomeTabView)
+                    }
+                }
+            }
         }
+        .allowsHitTesting(!viewModel.isPerforming)
+        .opacity(!viewModel.isPerforming ? 1 : 0.7)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .fullScreenLoadingIndicator(isShowing: viewModel.isLoading)
         .overlay(alignment: .center) {
             // Custom alert overlay
-            if showingCustomAlert {
-                Color.black.opacity(0.4) // Semi-transparent background
+            if let errorMessage = viewModel.errorMessage {
+                Color.black.opacity(0.4)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         // Optional: Dismiss alert by tapping background
@@ -107,11 +123,10 @@ struct LoginView: View {
                 
                 CustomAlertView(
                     title: "Limes",
-                    message: errorMessage ?? "Error", isOkayOnly: true,
+                    message: errorMessage, isOkayOnly: true,
                     isPresented: $showingCustomAlert,
                     confirmAction: {
-                        // Put your confirmation logic here
-                        print("Action confirmed!")
+                        viewModel.errorMessage = nil
                     }
                 )
                 .transition(.scale) // Optional: Add a transition effect
@@ -119,27 +134,18 @@ struct LoginView: View {
         }
     }
     
-    func loginUser() async {
-        do {
-            viewModel.user = try await viewModel.loginUser()
-        } catch LimesAPIError.invalidData {
-            errorMessage = "Invalid data"
-            showingCustomAlert = true
-        } catch LimesAPIError.invalidURL {
-            errorMessage = "Invalid URL"
-            showingCustomAlert = true
-        } catch LimesAPIError.invalidResponse {
-            errorMessage = "Invalid Response"
-            showingCustomAlert = true
-        } catch {
-            errorMessage = "Something went wrong, please try again"
-            showingCustomAlert = true
-        }
-    }
 }
 
 #Preview {
-    @Previewable @State var userValidator = UserValidator()
+    @Previewable @State var routes:[Route] = []
     
-    LoginView (userValidator: userValidator)
+    NavigationStack(path: $routes) {
+        LoginView()
+            .navigationDestination(for: Route.self) { route in
+                route.destination
+            }
+    }
+    .environment(\.navigate, NavigationAction(action: { route in
+        routes.append(route)
+    }))
 }

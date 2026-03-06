@@ -119,19 +119,20 @@ struct EFTPaymentView: View {
         case .denied:
             print("Access denied.")
         case .notDetermined:
-            contactStore.requestAccess(for: .contacts) { (success, error) in
-                if success {
-                    Task {
-                        do {
-                            try await getContactList()
-                        } catch {
-                            print("Failed to fetch data: \(error)")
-                        }
-                    }
-                } else {
-                    print("Error requesting access")
-                }
-            }
+//            contactStore.requestAccess(for: .contacts) { (success, error) in
+//                if success {
+//                    Task {
+//                        do {
+//                            try await getContactList()
+//                        } catch {
+//                            print("Failed to fetch data: \(error)")
+//                        }
+//                    }
+//                } else {
+//                    print("Error requesting access")
+//                }
+//            }
+            print("Error requesting access")
         case .restricted:
             print("Access to contacts is restricted")
         default:

@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ProfileBlockView: View {
+    @ObservedObject var viewModel = LoginViewModel()
+//    @Binding var isSignedIn: Bool
     @Binding var profile: User
+    @Binding var listIndex: String
+    
     @State var profileFeature = [
         ProfileListItem(title: "Notification centre", badge: 10, icon: "chevron.right"),
         ProfileListItem(title: "My orders", badge: nil, icon: "chevron.right"),
@@ -32,7 +36,9 @@ struct ProfileBlockView: View {
                 PhoneNumberView(phoneNumber: profile.phoneNumber)
                 
                 ForEach(profileFeature) { feature in
-                    ListItemsView(title: feature.title, badge: feature.badge, icon: feature.icon)
+                    BlankButton(buttonTitle: feature.title, badge: feature.badge, icon: feature.icon, width: .infinity, height: 48) {
+                        listIndex = feature.title
+                    }
                 }
             }
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
@@ -132,5 +138,5 @@ struct ProfileBlockView: View {
                                 phoneNumber: "0677739828",
                                 fullName: "Wayne Moosa",
                                 photoURL: nil)
-    ProfileBlockView(profile: $profile)
+    ProfileBlockView(profile: $profile, listIndex: .constant(""))
 }

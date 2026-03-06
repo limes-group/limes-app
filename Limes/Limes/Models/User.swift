@@ -8,11 +8,11 @@
 import Foundation
 
 struct User: Codable, Identifiable {
-    let id: String
-    let email: String
-    let phoneNumber: String
-    let fullName: String
-    let photoURL: URL?
+    var id: String
+    var email: String
+    var phoneNumber: String
+    var fullName: String
+    var photoURL: URL?
     
     var initials: String {
         let formatter = PersonNameComponentsFormatter()

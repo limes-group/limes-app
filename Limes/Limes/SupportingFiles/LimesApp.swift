@@ -11,6 +11,9 @@ import FirebaseCore
 
 @main
 struct LimesApp: App {
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    @State var routes:[Route] = []
     @State var userValidator = UserValidator()
     
     init() {
@@ -18,12 +21,21 @@ struct LimesApp: App {
     }
     
     var body: some Scene {
+        let viewModel = LoginViewModel()
         WindowGroup {
-            ZStack {
-                WalletHomeView()
+            NavigationStack(path: $routes) {
+                WelcomeView()
+                    .environmentObject(viewModel)
                     .environmentObject(ProfileViewModel.sharedInstance)
+                    .navigationDestination(for: Route.self) { route in
+                        route.destination
+                    }
+                    
                     .environmentObject(AuthManager())
             }
+            .environment(\.navigate, NavigationAction(action: { route in
+                routes.append(route)
+            }))
         }
     }
 }

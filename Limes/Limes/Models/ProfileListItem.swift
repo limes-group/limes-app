@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProfileListItem: Identifiable {
+struct ProfileListItem: Identifiable, Hashable {
     let id = UUID() //
     let title: String
     let badge: Int?

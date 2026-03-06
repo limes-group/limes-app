@@ -30,12 +30,12 @@ struct CheckoutDoneView: View {
                         .font(.manrope(size: 15))
                         .foregroundStyle(.white)
                     
-                    NavigationLink(destination: {
-                        HomeTabView()
-                            .navigationBarBackButtonHidden(true)
-                    }, label: {
-                        AccentButtonView(buttonTitle: "Back to my Wallet", width: 200, height: 40)
-                    })
+                    AccentButtonView(buttonTitle: "Back to my Wallet", width: 200, height: 40) {
+                        
+                    } onStatusChange: { isLoading in
+//                        viewModel.isPerforming = isLoading
+                    }
+                    
                     Spacer()
                 }
                 .appBackground()

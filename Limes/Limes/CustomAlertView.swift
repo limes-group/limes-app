@@ -15,18 +15,25 @@ struct CustomAlertView: View {
     let confirmAction: () -> Void
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 8) {
+            Image("LimesIcon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60, height: 60)
+                .clipShape(Circle())
+                .padding(EdgeInsets(top: 8, leading: 0, bottom: 4, trailing: 0))
+            
             Text(title)
                 .bold()
                 .font(.darkerGrotesque(size: 24))
-                .foregroundStyle(.accent)
+                .foregroundStyle(.black)
                 .multilineTextAlignment(.center)
-                .padding(.top, 20)
+                .padding(EdgeInsets(top: 8, leading: 0, bottom: 4, trailing: 0))
             
             Text(message)
                 .font(.manrope(size: 16))
                 .font(Font.system(.body, weight: .medium))
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
                 .padding(.horizontal, 20)
                 .multilineTextAlignment(.center)
             
@@ -89,7 +96,6 @@ struct CustomAlertView: View {
                 .frame(height: 60)
             }
         }
-        .appBackground()
         .frame(width: 300)
         .background(Color.white)
         .cornerRadius(15)
@@ -99,7 +105,7 @@ struct CustomAlertView: View {
 
 
 #Preview {
-    CustomAlertView(title: "Error Message", message: "Invalid Response", isOkayOnly: false, isPresented: .constant(true), confirmAction: {
+    CustomAlertView(title: "Error Message", message: "Invalid Response", isOkayOnly: true, isPresented: .constant(true), confirmAction: {
         
     })
 }

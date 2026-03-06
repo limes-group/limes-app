@@ -11,38 +11,36 @@ struct WalletHomeView: View {
     @ObservedObject var userViewModel = ProfileViewModel.sharedInstance
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                ZStack {
-                    VStack {
-                        Text("Hi, \(String(userViewModel.profile.user.fullName))")
-                            .font(.darkerGrotesqueBold(size: 24))
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Text("Welcome to your Wallet")
-                            .font(.manrope(size: 15))
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
-                        
-                        WalletBalanceView(
-                            availableBalance: $userViewModel.profile.availableBalance,
-                            cashBack: $userViewModel.profile.cashback)
-                        
-                        WalletActionsView()
-                        
-                        WalletRecentTransactionsView(transactions: userViewModel.profile.transactions)
-                        
-                        Spacer()
-                    }
-                    .padding()
+        ScrollView {
+            ZStack {
+                VStack {
+                    Text("Hi, \(String(userViewModel.profile.user.fullName))")
+                        .font(.darkerGrotesqueBold(size: 24))
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("Welcome to your Wallet")
+                        .font(.manrope(size: 15))
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                    
+                    WalletBalanceView(
+                        availableBalance: $userViewModel.profile.availableBalance,
+                        cashBack: $userViewModel.profile.cashback)
+                    
+                    WalletActionsView()
+                    
+                    WalletRecentTransactionsView(transactions: userViewModel.profile.transactions)
+                    
+                    Spacer()
                 }
+                .padding()
             }
-            .appBackground()
         }
+        .appBackground()
         .onAppear() {
             userViewModel.loadProfile()
         }
