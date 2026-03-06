@@ -11,7 +11,8 @@ enum Route: Hashable {
     case welcomeView
     case loginView
     case signupView
-    case forgotPasswordView    
+    case verifyUserView
+    case forgotPasswordView
     case walletHomeTabView
     
     @ViewBuilder
@@ -25,6 +26,9 @@ enum Route: Hashable {
                 .navigationBarBackButtonHidden(true)
             case .signupView:
                 SignUpView()
+                .navigationBarBackButtonHidden(true)
+            case .verifyUserView:
+                VerificationView()
                 .navigationBarBackButtonHidden(true)
             case .forgotPasswordView:
                 ForgotPasswordView()

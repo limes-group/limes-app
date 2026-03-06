@@ -45,11 +45,24 @@ class LoginViewModel: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.async {
-                self?.isPerforming = false
-                self?.isLoading = false
-                self?.signedIn = true
+            self?.auth.currentUser?.sendEmailVerification { (error) in
+                if let error = error {
+                    self?.errorMessage = error.localizedDescription
+                  return
+                }
+                
+                DispatchQueue.main.async {
+                    self?.isPerforming = false
+                    self?.isLoading = false
+                    self?.signedIn = true
+                }                
             }
+            
+//            DispatchQueue.main.async {
+//                self?.isPerforming = false
+//                self?.isLoading = false
+//                self?.signedIn = true
+//            }
         }
     }
     

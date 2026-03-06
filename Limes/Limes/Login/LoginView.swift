@@ -101,7 +101,7 @@ struct LoginView: View {
             .onChange(of: viewModel.signedIn) {
                 if viewModel.signedIn {
                     Task {
-                        try? await Task.sleep(for: .seconds(0.1))
+                        try? await Task.sleep(for: .seconds(0.5))
                         navigate(.walletHomeTabView)
                     }
                 }

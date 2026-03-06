@@ -77,33 +77,33 @@ class AuthManager: ObservableObject {
             }
         }
     }
-    //    func loginUser(credentials: LoginRequest) async throws -> AuthResponse {
-    //        guard let url = URL(string: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{\(AuthManager.Firebase_Api_Key)}}") else {
-    //            throw LimesAPIError.invalidURL
-    //        }
-    //
-    //        print("API: \(url)")
-    //
-    //        var request = URLRequest(url: url)
-    //                request.httpMethod = "POST"
-    //                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    //                request.httpBody = try JSONEncoder().encode(credentials)
-    //
-    //        let (data, response) = try await URLSession.shared.data(from: url)
-    //
-    //        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-    //            print("Error: \(URLError(.badServerResponse).localizedDescription)")
-    //            throw URLError(.badServerResponse)
-    //        }
-    //
-    //        do {
-    //            let decoder = JSONDecoder()
-    //            decoder.keyDecodingStrategy = .convertFromSnakeCase
-    //            return try JSONDecoder().decode(AuthResponse.self, from: data)
-    //        } catch {
-    //            throw LimesAPIError.invalidData
-    //        }
-    //    }
+//        func loginUser(credentials: LoginRequest) async throws -> AuthResponse {
+//            guard let url = URL(string: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{\(AuthManager.Firebase_Api_Key)}}") else {
+//                throw LimesAPIError.invalidURL
+//            }
+//    
+//            print("API: \(url)")
+//    
+//            var request = URLRequest(url: url)
+//                    request.httpMethod = "POST"
+//                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//                    request.httpBody = try JSONEncoder().encode(credentials)
+//    
+//            let (data, response) = try await URLSession.shared.data(from: url)
+//    
+//            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+//                print("Error: \(URLError(.badServerResponse).localizedDescription)")
+//                throw URLError(.badServerResponse)
+//            }
+//    
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                return try JSONDecoder().decode(AuthResponse.self, from: data)
+//            } catch {
+//                throw LimesAPIError.invalidData
+//            }
+//        }
     //
     //    func signInWith(email: String, andPassword password: String) async throws -> FirebaseAuthResponse {
     //
