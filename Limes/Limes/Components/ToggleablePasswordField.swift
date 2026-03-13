@@ -17,7 +17,7 @@ struct ToggleablePasswordField: View {
         ZStack {
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: 68)
-                .foregroundStyle(.black)
+                .foregroundStyle(.appBlack)
                 .cornerRadius(16)
             
             VStack {

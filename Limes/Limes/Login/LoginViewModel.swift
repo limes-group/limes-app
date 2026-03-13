@@ -15,8 +15,8 @@ class LoginViewModel: ObservableObject {
     @Published var signedIn: Bool = false
     @Published var user: User?
     @Published var countryCode = "+27"
-    @Published var email = "balleng2@gmail.com"
-    @Published var password = "PassWord@1"
+    @Published var email = "" // "balleng2@gmail.com"
+    @Published var password = "" // "PassWord@1"
     @Published var isPasswordSecure = true
     @Published var rememberMe = false
     @Published var isLoading: Bool = false
@@ -40,29 +40,17 @@ class LoginViewModel: ObservableObject {
             guard authResult != nil, error == nil else {
                 DispatchQueue.main.async {
                     self?.isPerforming = false
+                    self?.isLoading = false
                     self?.errorMessage = error?.localizedDescription
                 }
                 return
             }
             
-            self?.auth.currentUser?.sendEmailVerification { (error) in
-                if let error = error {
-                    self?.errorMessage = error.localizedDescription
-                  return
-                }
-                
-                DispatchQueue.main.async {
-                    self?.isPerforming = false
-                    self?.isLoading = false
-                    self?.signedIn = true
-                }                
+            DispatchQueue.main.async {
+                self?.isPerforming = false
+                self?.isLoading = false
+                self?.signedIn = true
             }
-            
-//            DispatchQueue.main.async {
-//                self?.isPerforming = false
-//                self?.isLoading = false
-//                self?.signedIn = true
-//            }
         }
     }
     

@@ -129,7 +129,7 @@ struct LoginView: View {
                         viewModel.errorMessage = nil
                     }
                 )
-                .transition(.scale) // Optional: Add a transition effect
+                .transition(.scale)
             }
         }
     }

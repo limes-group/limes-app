@@ -29,10 +29,10 @@ struct SignUpAuthResponse: Codable {
 
 class SignUpViewModel: ObservableObject {
     @Published var countryCode = "+27"
-    @Published var phoneNumber: String = "0671234567"
-    @Published var emailAddress: String = "pafemop615@him6.com" // "user4@testing.com"
-    @Published var password: String = "PassWord@1"
-    @Published var confirmPassword: String = "PassWord@1"
+    @Published var phoneNumber: String = ""
+    @Published var emailAddress: String = "" // "user4@testing.com"
+    @Published var password: String = ""
+    @Published var confirmPassword: String = ""
     @Published var isPasswordSecure: Bool = true
     @Published var isConfirmSecure: Bool = true
     @Published var hasAgreed = false
@@ -49,30 +49,18 @@ class SignUpViewModel: ObservableObject {
         auth.createUser(withEmail: emailAddress, password: password) { [weak self] authResult, error in
             guard let user = authResult?.user, error == nil else {
                 DispatchQueue.main.async {
+                    self?.isLoading = false
                     let errorText: String  = error?.localizedDescription ?? "unknown error"
                     self?.errorMessage = errorText
                 }
                 return
             }
             
-            self?.auth.currentUser?.sendEmailVerification { (error) in
-                if let error = error {
-                    self?.errorMessage = error.localizedDescription
-                  return
-                }
-                
-                DispatchQueue.main.async {
-                    self?.isLoading = false
-                    self?.signUp = true
-                }
-                
+            DispatchQueue.main.async {
+                print("Auth Result: \(String(describing: authResult))")
+                self?.isLoading = false
+                self?.signUp = true
             }
-            
-//            DispatchQueue.main.async {
-//                print("Auth Result: \(String(describing: authResult))")
-//                self?.isLoading = false
-//                self?.signUp = true
-//            }
         }
     }
     

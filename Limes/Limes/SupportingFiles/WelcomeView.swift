@@ -21,8 +21,13 @@ struct WelcomeView: View {
                 
                 Image("Logo")
                     .resizable()
-                    .frame(height: 120)
+                    .frame(width: 188, height: 52)
                     .foregroundStyle(.tint)
+                
+                Spacer()
+                Image("Welcome Benefits")
+                    .resizable()
+                    .frame(width: 360, height: 180)
                 Spacer()
                 
                 HStack {

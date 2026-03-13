@@ -17,6 +17,7 @@ struct WalletBalanceView: View {
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: 160)
                 .foregroundStyle(.secondaryBunker)
+                .cornerRadius(16)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(.lightBunker, lineWidth: 2)

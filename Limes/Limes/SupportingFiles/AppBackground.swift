@@ -11,7 +11,7 @@ struct AppBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(
-                Color.black
+                Color.appBlack
                     .ignoresSafeArea()
             )
     }

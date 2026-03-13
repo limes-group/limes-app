@@ -20,7 +20,7 @@ struct VariableBlackButton: View {
             } label: {
                 Text(buttonTitle)
                     .font(Font.system(.body, weight: .bold))
-                    .font(.darkerGrotesque(size: 14))
+                    .font(.darkerGrotesqueBold(size: 24))
                     .foregroundStyle(.white )
                     .frame(width: width, height: height)
                     .background(.secondaryBunker)

@@ -18,7 +18,7 @@ struct WhiteButton: View {
             } label: {
                 Text(buttonTitle)
                     .font(Font.system(.body, weight: .bold))
-                    .font(.darkerGrotesque(size: 16))
+                    .font(.darkerGrotesqueBold(size: 24))
                     .foregroundStyle(.black )
                     .frame(maxWidth: .infinity, maxHeight: 60)
                     .background(.white)

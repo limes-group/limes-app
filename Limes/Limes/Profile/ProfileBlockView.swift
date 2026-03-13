@@ -26,7 +26,8 @@ struct ProfileBlockView: View {
         ZStack {
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: 420)
-                .foregroundStyle(.black)
+                .foregroundStyle(.appBlack)
+                .cornerRadius(16)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(Color.secondaryBunker, lineWidth: 2)

@@ -18,7 +18,7 @@ struct AccentButton: View {
                 action()
             } label: {
                 Text(buttonTitle)
-                    .font(.darkerGrotesqueBold(size: 16))
+                    .font(.darkerGrotesqueBold(size: 24))
                     .foregroundStyle(.black )
                     .frame(maxWidth: .infinity, maxHeight: height)
                     .background(.accent)

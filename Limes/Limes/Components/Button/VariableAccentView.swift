@@ -20,7 +20,7 @@ struct VariableAccentView: View {
             } label: {
                 Text(buttonTitle)
                     .font(Font.system(.body, weight: .bold))
-                    .font(.darkerGrotesque(size: 14))
+                    .font(.darkerGrotesqueBold(size: 24))
                     .foregroundStyle(.black )
                     .frame(maxWidth: width, maxHeight: height)
                     .background(.accent)
